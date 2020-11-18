@@ -1,0 +1,94 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+<GridPane fx:controller="controller.MainFormController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="35" vgap="15"
+          stylesheets="@../styles.css"
+          fx:id="mainFormWindow">
+    <children>
+        <Label styleClass="mainFormHeader" text="Inventory Management System" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <GridPane styleClass="gridPane" GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="center" hgap="10" vgap="10">
+            <Label styleClass="tableLabel" GridPane.rowIndex="0" GridPane.columnIndex="0" text="Parts"/>
+            <TextField fx:id="textFieldPartSearch" promptText="Search by Part ID or Name" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="225"/>
+            <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="2" alignment="CENTER_RIGHT">
+                <Button text="Search" onAction="#searchPartTable"/>
+                <Button text="Refresh" onAction="#handleClearSearchParts"/>
+            </HBox>
+            <TableView styleClass="tableView" fx:id="partTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3" prefWidth="450" prefHeight="200">
+                <columns>
+                    <TableColumn text="Part ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="partID"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Part Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Inventory Level">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="stock"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Price/Cost per Unit">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="price"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="CENTER_RIGHT">
+                <Button fx:id="addPartButton" text="Add" onAction="#showAddPart"/>
+                <Button fx:id="modPartButton" text="Modify" onAction="#showModPart"/>
+                <Button fx:id="deletePartButton" text="Delete" onAction="#handleDeletePart"/>
+            </HBox>
+        </GridPane>
+        <GridPane styleClass="gridPane" GridPane.rowIndex="2" GridPane.columnIndex="1" alignment="center" hgap="10" vgap="10">
+            <Label styleClass="tableLabel" GridPane.rowIndex="0" GridPane.columnIndex="0" text="Products"/>
+            <TextField fx:id="textFieldProductSearch" promptText="Search by Product ID or Name" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="225"/>
+            <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="2" alignment="CENTER_RIGHT">
+                <Button text="Search" onAction="#searchProductTable"/>
+                <Button text="Refresh" onAction="#handleClearSearchProducts"/>
+            </HBox>
+            <TableView styleClass="tableView" fx:id="productTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3" prefWidth="450" prefHeight="200">
+                <columns>
+                    <TableColumn text="Product ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="productID"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Product Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Inventory Level">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="stock"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Price/Cost per Unit">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="price"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+                <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="2" alignment="CENTER_RIGHT">
+                    <Button fx:id="addProductButton" text="Add" onAction="#showAddProduct"/>
+                    <Button fx:id="modProductButton" text="Modify" onAction="#showModProduct"/>
+                    <Button fx:id="deleteProductButton" text="Delete" onAction="#handleDeleteProduct"/>
+                </HBox>
+        </GridPane>
+        <VBox alignment="CENTER_RIGHT" GridPane.rowIndex="3" GridPane.columnIndex="1" >
+            <Button styleClass="exitButton" fx:id="exitButton" text="Exit" onAction="#handleExit"/>
+        </VBox>
+    </children>
+</GridPane>

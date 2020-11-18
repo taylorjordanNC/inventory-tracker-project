@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.geometry.Insets?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="controller.AddProductController"
+          stylesheets="@../styles.css" prefWidth="1000" alignment="CENTER">
+    <HBox GridPane.rowIndex="0" GridPane.columnIndex="0" alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="15" left="15"/>
+        </padding>
+        <Label styleClass="dialogLabel" text="Add Product"/>
+    </HBox>
+    <GridPane GridPane.rowIndex="1" GridPane.columnIndex="0" alignment="CENTER_LEFT">
+    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" hgap="10" vgap="10" alignment="CENTER_LEFT">
+        <padding>
+            <Insets left="15" right="25"/>
+        </padding>
+        <HBox GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Label text="ID:"/>
+            <padding>
+                <Insets top="5"/>
+            </padding>
+        </HBox>
+        <HBox  GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <TextField styleClass="idTextField" fx:id="autoIdTextField"/>
+            <padding>
+                <Insets bottom="10"/>
+            </padding>
+        </HBox>
+
+        <Label text="Name:" GridPane.rowIndex="2" GridPane.columnIndex="0" translateY="-10"/>
+        <VBox GridPane.rowIndex="2" GridPane.columnIndex="1">
+            <TextField fx:id="nameTF" promptText="Required"/>
+            <Label fx:id="nameError" text="Required" />
+        </VBox>
+
+        <Label text="Inv:" GridPane.rowIndex="3" GridPane.columnIndex="0" translateY="-10"/>
+        <VBox GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <TextField fx:id="invTF" promptText="Required"/>
+            <Label fx:id="invError"/>
+        </VBox>
+
+        <Label text="Price/Cost:" GridPane.rowIndex="4" GridPane.columnIndex="0" translateY="-10"/>
+        <VBox GridPane.rowIndex="4" GridPane.columnIndex="1">
+            <TextField fx:id="priceTF" promptText="Required"/>
+            <Label fx:id="priceError"/>
+        </VBox>
+
+        <Label text="Max:" GridPane.rowIndex="5" GridPane.columnIndex="0" translateY="-10"/>
+        <VBox GridPane.rowIndex="5" GridPane.columnIndex="1">
+            <TextField fx:id="maxTF" promptText="Required"/>
+            <Label fx:id="maxError"/>
+        </VBox>
+
+        <Label text="Min:" GridPane.rowIndex="5" GridPane.columnIndex="2" translateY="-10"/>
+        <VBox GridPane.rowIndex="5" GridPane.columnIndex="3">
+            <TextField fx:id="minTF" promptText="Required"/>
+            <Label fx:id="minError"/>
+        </VBox>
+    </GridPane>
+    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="2" vgap="10" alignment="CENTER_RIGHT">
+        <TextField fx:id="searchTextField" promptText="Search by Part ID or Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TableView styleClass="tableView" fx:id="partTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" prefHeight="150">
+            <columns>
+                <TableColumn text="Part ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="partID"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Part Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Inventory Level">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="stock"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Price/Cost per Unit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="price"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <HBox  GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="CENTER_RIGHT">
+            <Button fx:id="addPartButton" onAction="#handleAddPart" text="Add"/>
+        </HBox>
+        <TableView styleClass="tableView" fx:id="associatedPartsTable" GridPane.rowIndex="3" GridPane.columnIndex="0" prefHeight="150">
+            <columns>
+                <TableColumn text="Part ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="partID"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Part Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Inventory Level">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="stock"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Price/Cost per Unit">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="price"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <HBox GridPane.rowIndex="4" GridPane.columnIndex="0" alignment="CENTER_RIGHT">
+        <Button fx:id="removePartButton" text="Remove Associated Part" onAction="#handleRemovePart"/>
+        </HBox>
+    </GridPane>
+</GridPane>
+    <HBox GridPane.rowIndex="2" GridPane.columnIndex="0" alignment="CENTER_RIGHT" spacing="20">
+        <padding>
+            <Insets top="15"/>
+        </padding>
+        <Button fx:id="saveButton" text="Save" onAction="#handleSave"/>
+        <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel"/>
+    </HBox>
+</GridPane>
